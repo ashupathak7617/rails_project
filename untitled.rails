@@ -1,0 +1,5 @@
+<% flash.each do |_type, msg| %>
+    <p class="lead text-danger">
+      <%= msg.html_safe %>
+    </p>
+  <% end %>

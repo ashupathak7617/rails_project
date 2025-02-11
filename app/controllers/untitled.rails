@@ -1,0 +1,76 @@
+my old code
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <% if user_signed_in? %>
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <%= current_user.email %></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><%= link_to destroy_user_session_path, data: { turbo_method: :delete },class:"dropdown-item" do %>
+               <i class="fa fa-sign-out" ></i> 
+             <% end %></a>
+            </li>
+         </ul>
+      <% end %>
+      
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-2">
+  <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+    <h5 class="text-center">Welcome To Our Website</h5>
+    <%# <a class="navbar-brand" href="#">Rails Project</a> %>
+
+    <% if user_signed_in? %>
+    <div class="dropdown mt-2 mx-auto">
+      <button class="btn btn-success " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" >
+        Settings
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Login as <%= current_user.email %></a></li>
+        
+    
+        
+        <%= link_to destroy_user_session_path, data: { turbo_method: :delete },class:"dropdown-item" do %>
+          <i class="fa fa-sign-out" ></i> 
+        <% end %>
+
+        
+        
+
+      </ul>
+    </div>
+    <%# else %>
+    <li><%#= link_to "Sign In", new_user_session_path, class:" btn btn-dark" %></li>
+    <% end %>
+  </nav>
+</div>
+
+
+
+
+
+
+ 

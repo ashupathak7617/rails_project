@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: rails_task_1
+  pool: 5
+  host: localhost
+  username: rails
+  password: rails

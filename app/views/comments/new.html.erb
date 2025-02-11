@@ -1,0 +1,33 @@
+<div class="container">
+	<div class= "row">
+		<div class="col-lg-6 mx-auto">
+			<div class="card card border-primary mt-2">
+				<div class="card-header text-center">
+					<h4>Comment for Blog</h4>
+				</div>
+				<div class="card-body ">
+					<div class="container">
+						<%= form_with model: @comment do |form| %>
+							<% flash.each do |_type, msg| %>
+								<p class="lead text-danger">
+									<%= msg.html_safe %>
+								</p>
+							<% end %>
+							<%= form.hidden_field :user_id, value: current_user.id %>
+							<%= form.hidden_field :blog_id, value: @comment.blog_id  %>
+							<div class="form-group" >
+								<%= form.label :comment %>
+								<%= form.text_field :comment, class: "form-control form-control-lg" %>
+							</div>
+							<div class="mt-2">
+								<%= form.submit class:"btn btn-primary" %>
+								<%= link_to "Back", :back, class:"btn btn-outline-info" %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,17 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mt-1">
+  <div class="container-fluid d-flex">
+    <h5 class="mt-1"><%= link_to 'Rails Blog Project', root_path, class:" text-light text-decoration-none  me-auto px-3"%>
+    </h5>
+
+    <% if user_signed_in? %>
+      <a class="nav-link active text-light me-auto" aria-current="page" href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <%= current_user.email %></a>
+
+      <h5 class="d-flex ms-auto order-5"> <%= link_to destroy_user_session_path, data: { turbo_method: :delete },class:"dropdown-item" do %>
+          <i class="fa fa-sign-out text-light" ></i> 
+        <% end %>
+      </h5>
+    <% end %>
+  </div>
+</nav>
+
