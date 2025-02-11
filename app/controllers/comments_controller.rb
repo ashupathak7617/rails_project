@@ -60,6 +60,6 @@ class CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = current_user.comments.find_by(id: params[:id])
+    @comment = Comment.find_by(id: params[:id])
   end
 end
