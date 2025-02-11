@@ -2,8 +2,7 @@ class CommentsController < ApplicationController
   
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_comment, only: %i[edit update destroy]
-
+  before_action :set_comment, only: %i[update destroy]
 
   def index
     @comment = Comment.where(blog_id: params[:blog_id])
@@ -21,7 +20,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html {redirect_to blogs_path, notice: "Blog has been created successfully"}
+        format.html {redirect_to blogs_path, notice: "Comment has been Added successfully"}
         format.json{ render json: @comment.to_json, status: :created}
       else
         format.html{redirect_to new_comment_path, alert: @comment.errors.full_messages.join("</br>")}
@@ -30,18 +29,16 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
+  def edit; end
 
-  end
-    
   def update
 
     respond_to do |format|
-      if @comment.update(comment_params)
+      if @comment && @comment.update(comment_params)
        format.html { redirect_to comments_path(blog_id: @comment.blog_id), notice: "Comment has been updated successfully" }
        format.json { render json: @comment.to_json }
       else
-        format.html { redirect_to edit_comment_path, alert: @comment.errors.full_messages }
+        format.html { redirect_to edit_comment_path, alert: @comment.errors.full_messages.join("</br>")  }
         format.json {render json: @comment.errors}
       end
     end
@@ -51,12 +48,12 @@ class CommentsController < ApplicationController
     if @comment.destroy
       redirect_to comments_path(blog_id: @comment.blog_id), notice: "Comment has been deleted successfully"
     end
-  end
+  end 
 
   private
 
   def comment_params
-   params.expect(comment: [:comment, :user_id, :blog_id])
+   params.expect(comment: [:comment, :blog_id])
   end
 
   def set_comment
