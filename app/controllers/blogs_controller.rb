@@ -30,13 +30,13 @@ class BlogsController < ApplicationController
         format.json{ render json: @blog, status: :created}
       else
         format.html {redirect_to new_blog_path, alert: @blog.errors.full_messages.join("</br>")}
-        format.json{ render json: @blog.errors, status: :not}
+        format.json{ render json: @blog.errors }
       end
     end
   end
 
   def show
-    respond_to do |format|
+     respond_to do |format|
       format.json { render json: @blog }
       format.html 
     end
@@ -47,16 +47,14 @@ class BlogsController < ApplicationController
 
   def update
     respond_to do |format|
-      if current_user.role == 'admin'
+      
         if @blog.update(blog_params)
           format.html{redirect_to blogs_path, notice: "Blog has been updated successfully"}
           format.json{render json: @blog, status: :updated}
         else
           redirect_to edit_blog_path, alert: @blog.errors.full_messages.join("</br>")
         end
-      else
-        redirect_to blogs_path, alert: "no are not a admin user"
-      end
+      
     end
   end
   
@@ -85,6 +83,6 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-   params.expect(blog: [ :title, :content, :user_id ])
+   params.expect(blog: [:title, :content])
   end
 end

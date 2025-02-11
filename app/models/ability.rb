@@ -30,7 +30,9 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
     
     if user.admin?
+     can :read, Comment
      can :create, Blog
+     can :create, Comment
      can :edit, Blog
      can :update, Blog
      can :read, Blog
@@ -39,6 +41,7 @@ class Ability
 
     if user.user?
       can :create, Blog
+      can :create, Comment
       can :read, Blog
       can :read, Comment
       can :edit, Comment

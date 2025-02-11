@@ -23,7 +23,7 @@
 										<td><%=comment.user.email %></td>
 										 <td><%=comment.comment %></td>
 										<%# <% if current_user && current_user.id == comment.user_id %> 
-										<% if can? :edit, Comment %>
+										<%# <% if can? :edit, Comment %> 
 									    <td>
 										    <div class="d-inline-flex ">
 										    	
@@ -36,7 +36,7 @@
 											    <% end %>
 					              </div>
 				              </td>
-										<% end %>
+										<%# <% end %> 
 									</tr>
 								<% end %>
 						  </tbody>

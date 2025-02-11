@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   # protect_from_forgery with: :null_session
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  rescue_from CanCan::AccessDenied do |e|
+    respond_to do |format|
+      format.html { redirect_to root_path, alert: e.message }
+      format.json { head :forbidden }
+    end
+  end
 
   protected
 
