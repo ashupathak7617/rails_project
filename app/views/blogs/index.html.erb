@@ -17,10 +17,10 @@
 					<% @blogs.each do |blog|%>
 					<tr>
 						<td><%= blog.user.email %>
-							<td><%= blog.title %></td>
-							<td><%= blog.content %></td>
+							<td class="text-break"><%= blog.title %></td>
+							<td class="text-break"><%= blog.content %></td>
 							<td>
-								<%= link_to  blog_path(blog), class:"" do %>
+								<%= link_to blog_path(blog, page: params[:page]), class:"" do %>
 								<h4>
 								  <i class="fa-solid fa-eye mt-3"></i>
 								</h4>

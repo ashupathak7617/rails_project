@@ -69,3 +69,4 @@ gem "byebug", "~> 11.1"
 gem 'devise-jwt'
 gem 'jsonapi-serializer'
 gem 'cancancan'
+gem 'rubocop'
