@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   
   rescue_from CanCan::AccessDenied do |e|
     respond_to do |format|
-      format.html { redirect_to root_path, alert: e.message }
+      format.html { redirect_to root_path, alert: "you are not authorized to access this page" }
       format.json { head :forbidden }
     end
   end

@@ -29,24 +29,24 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
     
-    if user.admin?
-     can :read, Comment
-     can :create, Blog
-     can :create, Comment
-     can :edit, Blog
-     can :update, Blog
-     can :read, Blog
-     can :destroy, Blog
-    end
+    # if user.admin? 
+    #  can :read, Blog
+    #  can :create, Blog
+    #  can :edit, Blog
+    #  can :update, Blog
+    #  can :destroy, Blog
+    #  can :read, Comment
+    #  can :create, Comment
+    # end
 
-    if user.user?
-      can :create, Blog
-      can :create, Comment
-      can :read, Blog
-      can :read, Comment
-      can :edit, Comment
-      can :update, Comment
-      can :destroy, Comment
-    end
+    # if user.user?
+    #   can :read, Blog
+    #   can :create, Blog
+    #   can :create, Comment
+    #   can :read, Comment
+    #   can :edit, Comment
+    #   can :update, Comment
+    #   can :destroy, Comment
+    # end
   end
 end

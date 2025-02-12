@@ -7,6 +7,7 @@
 				</div>
 				<div class="card-body ">
 					<div class="container">
+						
 						<%= form_with model: @comment  do |form| %>
 							<% flash.each do |_type, msg| %>
 							<p class="lead text-danger">
@@ -22,7 +23,7 @@
 							</div>
 							<div class="mt-2">
 								<%= form.submit class:"btn btn-primary" %>
-								<%= link_to "Back" ,blogs_path,class:"btn btn-outline-info" %>
+								<%= link_to "Back" ,blog_path(@comment.blog_id),class:"btn btn-outline-info" %>
 							</div>
 						<% end %>
 					</div>

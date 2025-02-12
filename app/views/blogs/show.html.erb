@@ -7,27 +7,29 @@
         </div>
         <div class="card-body ">
           
-          <div class="container">
-            <p class="lead"><strong>Title : </strong><%= @blog.title %>
-            </p>
-            <p class="lead"><strong>Content : </strong><%= @blog.content %>
-            </p>
+          <div class="container ">
+            <% if @blog.image.attached? %>
+              <div class=" ">
+                <%=  image_tag @blog.image, size: "360x280", class: "border border-5 mb-2" %>
+              </div>
+            <% end %>
+            <h7><p><strong>Title : </strong><%= @blog.title %>
+            </p></h7>
 
+            <h7><p class=""><strong>Content : </strong><%= @blog.content %>
+            </p></h7>
             <%=link_to "Add Comment", new_comment_path(blog_id: @blog.id), class:"btn btn btn-outline-primary" %>
-
-            <%=link_to "Show Comments", comments_path(blog_id: @blog.id), class:"btn btn btn-outline-primary" %>
+             
+            <%=link_to "Show Comments", comments_path(blog_id: @blog.id, page: params[:page]), class:"btn btn btn-outline-primary" %>
+            <%=link_to "Back", blogs_path(page: params[:page]), class:"btn btn btn-outline-primary" %></br>
             
-            <%=link_to "Back", blogs_path, class:"btn btn btn-outline-primary" %></br>
-            
-            <%# <% if current_user && current_user.id == @blog.user_id %> 
-            <%# <% if current_user.role == 'admin' %> 
-            
+            <% if current_user && current_user.id == @blog.user_id %> 
               <div class="d-inline-flex mt-2">
                 <%= link_to "Edit" ,edit_blog_path(@blog),class:"btn btn-outline-primary mb-2" %> &nbsp;
                   
                 <%= button_to "Delete", @blog, method: :delete, data:{ turbo_confirm: "Are you sure?" }, class: "btn btn btn-outline-danger" %>
               </div>
-            
+            <% end %>
           </div>
         </div>
       </div>
