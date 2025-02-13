@@ -32,6 +32,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @comments = @blog.comments
      respond_to do |format|
       format.json { render json: @blog }
       format.html

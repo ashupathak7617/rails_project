@@ -6,8 +6,12 @@
           <h4 class="text-primary"><strong>Blog</strong></h4>
         </div>
         <div class="card-body ">
-          
           <div class="container ">
+            <h5 class="direction: rtl" style="direction: rtl"><%= link_to blogs_path(page: params[:page]), class:"" do %>
+               <i class="fa-solid fa-circle-arrow-right "></i>
+              <% end %>
+            </h5>
+
             <% if @blog.image.attached? %>
               <div class=" ">
                 <%=  image_tag @blog.image, size: "360x280", class: "border border-5 mb-2" %>
@@ -18,11 +22,42 @@
 
             <h7><p class=""><strong>Content : </strong><%= @blog.content %>
             </p></h7>
-            <%=link_to "Add Comment", new_comment_path(blog_id: @blog.id), class:"btn btn btn-outline-primary" %>
-             
-            <%=link_to "Show Comments", comments_path(blog_id: @blog.id, page: params[:page]), class:"btn btn btn-outline-primary" %>
-            <%=link_to "Back", blogs_path(page: params[:page]), class:"btn btn btn-outline-primary" %></br>
             
+            <h7><p class=""><strong>Comments : </strong><table class="table ">
+              <thead>
+                <tr>
+                  <th scope="col">User</th>
+                  <th scope="col">Comment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @comments.each do |comment| %>
+                <tr>
+                  <td><%= comment.user.email %></td>
+                  <td><%= comment.comment %></td>
+                  <% if current_user && current_user.id == comment.user_id %> 
+                    <%# <% if can? :edit, Comment %> 
+                      <td>
+                        <div class="d-inline-flex ">
+
+                          <%= link_to  edit_comment_path(id: comment.id),class:"d-inline-flex mt-1 px-2" do %>
+                            <i class="fa-solid fa-pen-to-square "></i>
+                          <% end %>   
+                          <%= button_to comment, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "border-0 bg-transparent" do %>
+                               <i class="fa-regular fa-trash-can text-danger "></i> 
+                            <% end %>
+                        </div>
+                      </td>
+                    <% end %> 
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+            </p></h7>
+            
+            
+            <%=link_to "Add Comment", new_comment_path(blog_id: @blog.id), class:"btn btn btn-outline-primary" %> 
+             
             <% if current_user && current_user.id == @blog.user_id %> 
               <div class="d-inline-flex mt-2">
                 <%= link_to "Edit" ,edit_blog_path(@blog),class:"btn btn-outline-primary mb-2" %> &nbsp;
@@ -36,4 +71,3 @@
     </div>
   </div>
 </div>
-
