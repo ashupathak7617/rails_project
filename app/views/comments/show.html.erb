@@ -1,0 +1,37 @@
+<div class="container">
+  <div class= "row">
+    <div class="col-lg-8 mx-auto">
+      <div class="card card border-primary mt-2">
+        <div class="card-header text-center">
+          <h3>Comment</h3>
+        </div>
+        <div class="card-body ">
+          <div class="container">
+              <h5 class="direction: rtl" style="direction: rtl"><%= link_to blog_path(@comment.blog), class:"" do %>
+               <i class="fa-solid fa-circle-arrow-right "></i>
+              <% end %>
+            </h5>
+            <div class="">
+              <p><strong>Comment : </strong><%= @comment.comment %> </p>
+                <% if current_user && current_user.id == @comment.user_id %> 
+                <%# <% if can? :edit, Comment %> 
+                  <h6  class="mt- 4">
+                    <td>
+                      <div class="d-inline-flex ">
+                        <%= link_to  "Edit", edit_comment_path(id: @comment.id),class:"d-inline-flex mt-1 px-3 btn btn-outline-primary"  %></div>  
+                          <%# <i class="fa-solid fa-pen-to-square "></i> %>
+                        <%# end %>   
+                        <%= link_to "Delete", @comment, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "  btn btn-outline-danger "  %>
+                             <%# <i class="fa-regular fa-trash-can text-danger "></i>  %>
+                        <%# end %>
+                      </div>
+                    </td>
+                  </h6>
+                <% end %>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

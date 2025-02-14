@@ -2,3 +2,8 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@fortawesome/fontawesome-free";
+//= require jquery 
+//= require popper 
+//= require turbolinks 
+//= require bootstrap 
+//= require_tree.

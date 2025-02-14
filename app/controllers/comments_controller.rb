@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   # load_and_authorize_resource
-  before_action :set_comment, only: %i[edit update destroy]
+  before_action :set_comment, only: %i[show edit update destroy]
   before_action :set_blog, only: %i[index new]
 
   def index
@@ -10,6 +10,10 @@ class CommentsController < ApplicationController
       format.json { render json: @comment, status: 200 }
       format.html
     end
+  end
+
+  def show
+
   end
 
   def new

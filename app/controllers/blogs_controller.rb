@@ -27,6 +27,7 @@ class BlogsController < ApplicationController
       else
         format.html { redirect_to new_blog_path, alert: @blog.errors.full_messages.join("</br>") }
         format.json { render json: @blog.errors }
+
       end
     end
   end
