@@ -1,0 +1,7 @@
+<h1>Welcome <%= user.email %></h1>
+  <p>
+    You have successfully signed up to our website,
+    your username is: <%= @user.email %>.<br>
+    you can login by click <%= link_to "Login", "http://localhost:3000/users/sign_in", class: "text-primary" %>
+  </p>
+<p>Thanks for joining and have a great day!</p>

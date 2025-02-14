@@ -1,0 +1,5 @@
+
+                          <i <%# type="button" class="fa-solid fa-pen-to-square " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Launch demo modal
+                          </i %>>
+                           <%= link_to 'Add user', edit_comment_path(id: comment.id),  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#exampleModal', class: 'nav-link'}  %>
