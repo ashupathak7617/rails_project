@@ -65,7 +65,7 @@ gem 'devise'
 gem 'font-awesome-sass'
 gem 'will_paginate'
 gem 'activeadmin'
-gem "byebug", "~> 11.1"
+gem "byebug", "~> 12.0"
 gem 'devise-jwt'
 gem 'jsonapi-serializer'
 gem 'cancancan'
